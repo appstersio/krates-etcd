@@ -9,16 +9,15 @@ build:
 
 # NOTE: Find out more about use of logical OR operators in bash:
 # https://bash.cyberciti.biz/guide/Logical_OR
-up:
-	@docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d && sleep 5 && \
-		echo "OK: Successfuly launched all the required components..."
+dev:
+	@docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm tools
 
 release-up:
 	@docker-compose up -d && sleep 5 && \
 		echo "OK: Successfuly launched all the required components..."
 
 test:
-	@docker-compose exec -T lbe bats /test && \
+	@docker-compose exec -T tools bats /test && \
 		echo "OK: Successfuly passed all the tests for this build of load balancer..."
 
 teardown:

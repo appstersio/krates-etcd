@@ -2,5 +2,14 @@ version: "3.6"
 services:
   etcd:
     build: .
-    image: staticpagesio/etcd
+    image: staticpagesio/etcd:v3.3.13
     command: --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://etcd:2379
+
+  tools:
+    image: etcdtesthelper
+    build:
+      context: ./
+      dockerfile: "Dockerfile.testhelper"
+    command: -c "sleep 1d" # Keeps container running
+    links:
+      - etcd

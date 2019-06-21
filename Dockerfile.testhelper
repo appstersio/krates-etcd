@@ -1,0 +1,7 @@
+FROM staticpagesio/tools:v1.0.0
+
+# Cleanup tests
+RUN rm -rf /test
+
+# Add Load Balancer's tests
+ADD test/ /test/
