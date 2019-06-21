@@ -3,11 +3,9 @@ pipeline {
   // agent
   agent any
 
-  triggers { cron('@hourly') }
-
   // options
   options {
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '12')
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
   }
   // stages
   stages {
