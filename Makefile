@@ -26,5 +26,5 @@ teardown:
 
 publish:
 	@docker login -u="$$(kontena vault read --value DOCKER_USERNAME)" -p="$$(kontena vault read --value DOCKER_PASSWORD)" && \
-		docker-compose push lb && \
-		echo "OK: Successfuly published 'lb' image..."
+		docker-compose push etcd && \
+		echo "OK: Successfuly published 'etcd' image..."
