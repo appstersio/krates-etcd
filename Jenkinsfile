@@ -3,6 +3,9 @@ pipeline {
   // agent
   agent any
 
+  // Nightly builds happen at midnight
+  triggers { cron('@midnight') }
+
   // options
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
