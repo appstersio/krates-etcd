@@ -5,7 +5,7 @@
 .PHONY: test build teardown up publish
 
 build:
-	@docker-compose build
+	@docker-compose build --no-cache --force-rm
 
 # NOTE: Find out more about use of logical OR operators in bash:
 # https://bash.cyberciti.biz/guide/Logical_OR
