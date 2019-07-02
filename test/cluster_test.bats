@@ -2,16 +2,24 @@
 
 load "/usr/bin/common.bash"
 
-@test "etcd endpoint is online" {
-  run etcdctl endpoint health
+@test "etcd cluster is online" {
+  run etcdctl cluster-health
 
   [ "$status" -eq 0 ]
-  assert_output_contains "http://etcd:2379 is healthy:"
+  assert_output_contains "result from http://etcd:2379"
 }
 
-@test "etcd endpoint has expected version" {
-  run etcdctl endpoint status
+@test "etcd cluster is healthy" {
+  run etcdctl cluster-health
 
   [ "$status" -eq 0 ]
-  [ $(expr "${lines[0]}" : "http://etcd:2379, .*, ${ETCD_VERSION}") -ne 0 ]
+  assert_output_contains "cluster is healthy"
+}
+
+@test "etcd cluster has exactly one member" {
+  run etcdctl cluster-health
+
+  [ "$status" -eq 0 ]
+  [ $(expr "${lines[0]}" : "member .* is healthy:.*") -ne 0 ]
+  [ $(expr "${lines[1]}" : "cluster is healthy") -ne 0 ]
 }
