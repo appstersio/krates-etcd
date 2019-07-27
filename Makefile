@@ -18,7 +18,7 @@ release-up:
 
 test:
 	@docker-compose exec -T tools bats /test && \
-		echo "OK: Successfuly passed all the tests for this build of load balancer..."
+		echo "OK: Successfuly passed all the tests for this build of etcd..."
 
 teardown:
 	@docker-compose down && \

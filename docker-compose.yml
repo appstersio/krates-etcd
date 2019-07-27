@@ -2,7 +2,7 @@ version: "3.6"
 services:
   etcd:
     build: .
-    image: staticpagesio/etcd:v3.3.13
+    image: staticpagesio/etcd:v2.3.7
     command: --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://etcd:2379
 
   tools:
