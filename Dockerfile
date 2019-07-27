@@ -1,7 +1,5 @@
-FROM quay.io/coreos/etcd:v3.3.13
+FROM quay.io/coreos/etcd:v2.3.8
 LABEL maintainer="Pavel Tsurbeleu <pavel.tsurbeleu@me.com>"
-
-RUN apk --update add ca-certificates openssl
 
 VOLUME [ "/data" ]
 
