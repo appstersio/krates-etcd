@@ -5,7 +5,7 @@
 .PHONY: build run test down publish
 
 test:
-	@docker-compose run --rm tools -c "bats /test && \
+	@docker-compose run -T --rm tools -c "bats /test && \
 		echo 'OK: Successfuly passed all the tests for this build of etcd...'"
 
 build:
